@@ -140,12 +140,13 @@ public class PlaybackTest {
                 () -> second.getMedia().getId() == PlaybackPreferences.getCurrentlyPlayingFeedMediaId());
     }
 
-
+    @FlakyTest
     @Test
     public void testReplayEpisodeContinuousPlaybackOn() throws Exception {
         replayEpisodeCheck(true);
     }
-
+    
+    @FlakyTest
     @Test
     public void testReplayEpisodeContinuousPlaybackOff() throws Exception {
         replayEpisodeCheck(false);
@@ -155,7 +156,8 @@ public class PlaybackTest {
     public void testSmartMarkAsPlayed_Skip_Average() throws Exception {
         doTestSmartMarkAsPlayed_Skip_ForEpisode(0);
     }
-
+    
+    @FlakyTest
     @Test
     public void testSmartMarkAsPlayed_Skip_LastEpisodeInQueue() throws Exception {
         doTestSmartMarkAsPlayed_Skip_ForEpisode(-1);
@@ -189,6 +191,7 @@ public class PlaybackTest {
                 DBReader.getFeedItem(feedItem.getId()).isPlayed(), is(false));
     }
 
+    @FlakyTest
     @Test
     public void testStartLocal() throws Exception {
         uiTestUtils.addLocalFeedData(true);
@@ -208,7 +211,8 @@ public class PlaybackTest {
         Awaitility.await().atMost(1, TimeUnit.SECONDS).until(
                 () -> 1 == DBReader.getQueue().size());
     }
-
+    
+    @FlakyTest
     @Test
     public void testContinousPlaybackOffSingleEpisode() throws Exception {
         setContinuousPlaybackPreference(false);
